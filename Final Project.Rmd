@@ -1,7 +1,5 @@
 ---
 title: "Final Project- Sakshi Chandak"
-format: html
-editor: visual
 ---
 
 ```{r setup, include=FALSE}
@@ -69,7 +67,7 @@ all_reviews_merged[, c("brand_name.y", "product_name.y", "price_usd.y") := NULL]
 
 ## Data Analysis
 
-# Q1. Which specific secondary and tertiary categories under the Skincare category have been favorited by users the most?
+Q1. Which specific secondary and tertiary categories under the Skincare category have been favorited by users the most?
 
 ```{r}
 # Filter data for skincare category, then group by secondary category, summing up the 'loves_count', and finally order to find the most loved secondary category
@@ -98,7 +96,7 @@ most_loved_skincare_tertiary_category <- all_reviews_merged[
 most_loved_skincare_tertiary_category
 ```
 
-# Q2. Is there a relationship between product price and average user rating?
+Q2. Is there a relationship between product price and average user rating?
 
 ```{r}
 # Getting average user rating and price for each product
@@ -115,7 +113,7 @@ ggplot(product_price_rating, aes(x = avg_price, y = avg_user_rating)) +
   theme_minimal()
 ```
 
-# Q3. Which products are limited edition and also have high average user ratings?
+Q3. Which products are limited edition and also have high average user ratings?
 
 ```{r}
 # Filter for limited edition products, calculate average user rating, and select the top 20 products
@@ -140,7 +138,7 @@ ggplot(top_le_products, aes(x = reorder(product_name, avg_user_rating), y = avg_
   theme(plot.title = element_text(hjust = 0.1))
 ```
 
-# Q4. Which brands have the highest discrepancy between author rating and average user rating?
+Q4. Which brands have the highest discrepancy between author rating and average user rating?
 
 ```{r}
 # Creating a new column for the difference between author and average user rating
@@ -163,7 +161,7 @@ ggplot(top_diff_ratings, aes(x = reorder(brand_name, avg_diff), y = avg_diff)) +
   theme(plot.title = element_text(hjust = 0.5))
 ```
 
-# Q5. How does the "online_only" status affect a product's average rating?
+Q5. How does the "online_only" status affect a product's average rating?
 
 ```{r}
 # Calculate average user rating per product and merge with product info
@@ -190,4 +188,3 @@ ggplot(avg_ratings_with_info, aes(x = avg_user_rating, fill = as.factor(online_o
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.15))
 ```
-
